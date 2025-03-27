@@ -1,5 +1,7 @@
 import java.io.*;
 
+import java.io.*;
+
 public class TestProgram03 {
 
     public static void main(String[] args) {
