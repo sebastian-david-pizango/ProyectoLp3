@@ -1,4 +1,5 @@
 #include <iostream>
+#include <chrono>  // Para medir el tiempo
 using namespace std;
 
 // Función para imprimir el arreglo
@@ -31,20 +32,35 @@ void insertionSort(int arr[], int n)
         }
         arr[j + 1] = key;
     }
-    imprimir(arr,n);
 }
+
+// Función para medir y mostrar el tiempo de ejecución del ordenamiento
 void rangoPruebas(){
-    for(int i = 1; i<10000; i++){
+    for(int i = 1; i <= 10000; i++){
         int size = i;
         int vec[size];
-        descendente(vec,size);
-        cout<<"vector de tam: "<< i <<endl;
-        imprimir(vec,size);
-        cout<<"vector ordenado: ";
-        insertionSort(vec,size);
-        cout<<endl;
-    }    
+        descendente(vec, size);
+        
+        cout << "Vector de tamaño: " << i << endl;
+        imprimir(vec, size);
+
+        // Medir el tiempo de ejecución del ordenamiento
+        auto start = chrono::high_resolution_clock::now();
+        insertionSort(vec, size);
+        auto end = chrono::high_resolution_clock::now();
+        
+        // Calcular la duración en nanosegundos
+        chrono::duration<long long, std::nano> duration = end - start;
+        
+        cout << "Vector ordenado: ";
+        imprimir(vec, size);
+        
+        // Imprimir el tiempo que tardó el ordenamiento en nanosegundos
+        cout << "Tiempo: " << duration.count() << " nanosegundos" << endl;
+        cout << endl;
+    }
 }
+
 int main() {
     rangoPruebas();
     return 0;
