@@ -1,31 +1,20 @@
 #include <iostream>
-#include <chrono>  // Para medir el tiempo
+#include <chrono>
+#include <fstream> // Para escribir en archivos
 using namespace std;
 
-// Funci贸n para imprimir el arreglo
-void imprimir(int arr[], int n) {
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
-    }
-    cout << endl;
-}
-
-// Funci贸n para llenar el arreglo en orden descendente
+// Funci髇 para llenar el arreglo en orden descendente
 void descendente(int resu[], int num) {
     for (int i = 0; i < num; i++) {
         resu[i] = num - i;
     }
 }
 
-// Funci贸n para ordenar el arreglo usando Insertion Sort
-void insertionSort(int arr[], int n)
-{
+// Funci髇 para ordenar el arreglo usando Insertion Sort
+void insertionSort(int arr[], int n) {
     for (int i = 1; i < n; ++i) {
         int key = arr[i];
         int j = i - 1;
-
-        // Mover los elementos de arr[0..i-1] que son mayores que key
-        // a una posici贸n adelante de su posici贸n actual
         while (j >= 0 && arr[j] > key) {
             arr[j + 1] = arr[j];
             j = j - 1;
@@ -34,34 +23,38 @@ void insertionSort(int arr[], int n)
     }
 }
 
-// Funci贸n para medir y mostrar el tiempo de ejecuci贸n del ordenamiento
-void rangoPruebas(){
-    for(int i = 1; i <= 10000; i++){
+// Funci髇 para medir y mostrar el tiempo de ejecuci髇 del ordenamiento y guardarlo en un archivo
+void rangoPruebas() {
+    const int REPETICIONES = 10000; // Aumentamos repeticiones para estabilidad
+    ofstream archivo("resultados.txt");
+    archivo << "Tama駉 del arreglo,Tiempo promedio (nanosegundos)\n";
+    
+    for (int i = 1; i <= 10000; i++) {
         int size = i;
-        int vec[size];
-        descendente(vec, size);
+        int* vec = new int[size];
+        long long sumaTiempos = 0;
         
-        cout << "Vector de tama帽o: " << i << endl;
-        imprimir(vec, size);
-
-        // Medir el tiempo de ejecuci贸n del ordenamiento
-        auto start = chrono::high_resolution_clock::now();
-        insertionSort(vec, size);
-        auto end = chrono::high_resolution_clock::now();
+        for (int r = 0; r < REPETICIONES; r++) {
+            descendente(vec, size);
+            auto start = chrono::high_resolution_clock::now();
+            insertionSort(vec, size);
+            auto end = chrono::high_resolution_clock::now();
+            sumaTiempos += chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+        }
         
-        // Calcular la duraci贸n en nanosegundos
-        chrono::duration<long long, std::nano> duration = end - start;
+        long long tiempoPromedio = sumaTiempos / REPETICIONES;
         
-        cout << "Vector ordenado: ";
-        imprimir(vec, size);
+        cout << i << " " << tiempoPromedio << endl;
+        archivo << i << "," << tiempoPromedio << "\n";
         
-        // Imprimir el tiempo que tard贸 el ordenamiento en nanosegundos
-        cout << "Tiempo: " << duration.count() << " nanosegundos" << endl;
-        cout << endl;
+        delete[] vec;
     }
+    
+    archivo.close();
 }
 
 int main() {
     rangoPruebas();
     return 0;
 }
+
