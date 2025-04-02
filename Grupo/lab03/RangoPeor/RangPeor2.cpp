@@ -10,8 +10,8 @@ void descendente(int resu[], int num) {
     }
 }
 
-// Función para ordenar el arreglo usando Insertion Sort
-void insertionSort(int arr[], int n) {
+// Función para ordenar el arreglo usando insert Sort
+void insertSort(int arr[], int n) {
     for (int i = 1; i < n; ++i) {
         int key = arr[i];
         int j = i - 1;
@@ -25,7 +25,7 @@ void insertionSort(int arr[], int n) {
 
 // Función para medir y mostrar el tiempo de ejecución del ordenamiento y guardarlo en un archivo
 void rangoPruebas() {
-    const int REPETICIONES = 10000; // Aumentamos repeticiones para estabilidad
+    
     ofstream archivo("resultados.txt");
     archivo << "Tamaño del arreglo,Tiempo promedio (nanosegundos)\n";
     
@@ -34,15 +34,16 @@ void rangoPruebas() {
         int* vec = new int[size];
         long long sumaTiempos = 0;
         
-        for (int r = 0; r < REPETICIONES; r++) {
-            descendente(vec, size);
-            auto start = chrono::high_resolution_clock::now();
-            insertionSort(vec, size);
-            auto end = chrono::high_resolution_clock::now();
-            sumaTiempos += chrono::duration_cast<chrono::nanoseconds>(end - start).count();
-        }
+       
+        descendente(vec, size);
+        auto start = chrono::high_resolution_clock::now();
+        insertSort(vec, size);
+        auto end = chrono::high_resolution_clock::now();
+        sumaTiempos += chrono::duration_cast<chrono::nanoseconds>(end - start).count();
         
-        long long tiempoPromedio = sumaTiempos / REPETICIONES;
+        
+        long long tiempoPromedio = sumaTiempos /10000;
+	//para redondear tiempos sino los numeros se hacen demasiados largos
         
         cout << i << " " << tiempoPromedio << endl;
         archivo << i << "," << tiempoPromedio << "\n";
