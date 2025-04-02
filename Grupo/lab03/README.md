@@ -32,6 +32,7 @@ void insertSort(int arr[], int n) {
 
         arr[j + 1] = key;
     }
+
 }
 
 ## Codigo de creacion de arrays en el peor caso
@@ -43,13 +44,15 @@ void descendente(int resu[], int num) {
         resu[i] = num - i;
 
     }
+
 }
 
 # Commits
 
 ## Peor caso y ordenamiento
 
-- El código hecho en clase y el código del ordenamiento de GeeksforGeeks "https://www.geeksforgeeks.org/insertion-sort-algorithm/?ref=gcse_outind"
+- El código hecho en clase y el código del ordenamiento de GeeksforGeeks: 
+  "https://www.geeksforgeeks.org/insertion-sort-algorithm/?ref=gcse_outind"
 
 Commit 1 y 2: https://github.com/sebastian-david-pizango/ProyectoLp3/commit/b0cf7d80db6ab3e97bfe7ffc6ff0b95b038d2012
 

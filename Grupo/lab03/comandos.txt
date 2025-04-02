@@ -1,0 +1,11 @@
+Comandos para la simulacion del Gnuplot
+
+set title 'Tiempo de Ordenamiento en función del Tamaño del Arreglo
+set xlabel 'Tamaño del Arreglo';
+set ylabel 'Tiempo Promedio (en nanosegundos)';
+set grid;
+set style data linespoints;
+set datafile separator ',' ;
+plot 'resultados.txt' using 1:2 with linespoints
+
+"arriba es ubicacion \ resultados.txt"
