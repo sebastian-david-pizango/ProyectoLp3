@@ -1,32 +1,49 @@
 #include <iostream>
 using namespace std;
-int const NMAX =10000;
-int randomnumber(){ //crear numeros random
-    int a;
-    a = rand() % 101;
-    return a;
-}
-int sumaMat(int mat[][NMAX], int row, int col){
-    int contenedor;
-    for(int i = 0; i<row; i++){
-        for(int j = 0; j<col; j++){
-            contenedor+=mat[i][j];
-        }
-    }
-    return contenedor;
-}
-void crear_matrandom(int mat[][NMAX],int row, int col){
-    for(int i = 0; i<row; i++){
-        for(int j = 0; j<col; j++){
-            mat[i][j] = randomnumber();
+
+const int MAX = 100; 
+
+void llenarMatriz(int matriz[MAX][MAX], int n, int m, int limite = 100) {
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            matriz[i][j] = rand() % limite;
         }
     }
 }
+
+void mostrarMatriz(int matriz[MAX][MAX], int n, int m) {
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            cout << matriz[i][j] << "  ";
+        }
+        cout << endl;
+    }
+}
+
+int sumarMatriz(int matriz[MAX][MAX], int n, int m) {
+    int suma = 0;
+    for (int i = 0; i < n; ++i) {
+        for (int j = 0; j < m; ++j) {
+            suma += matriz[i][j];
+        }
+    }
+    return suma;
+}
+
 int main() {
-    int row = 5;
-    int col = 5;
-    int mat[row][col];
-    crear_matrandom(mat,row,col);
-    sumaMat(mat,row,col);
+    int n, m;
+    cout << "ingrese el numero de filas (max " << MAX << "): ";
+    cin >> n;
+    cout << "ingrese el nuemro de columnas (max " << MAX << "): ";
+    cin >> m;
+
+    int matriz[MAX][MAX];
+
+    llenarMatriz(matriz, n, m);
+    mostrarMatriz(matriz, n, m);
+
+    int suma = sumarMatriz(matriz, n, m);
+    cout << "\nla suma es: " << suma << endl;
+
     return 0;
 }
