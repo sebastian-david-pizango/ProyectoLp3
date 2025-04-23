@@ -1,49 +1,72 @@
 #include <iostream>
+#include <chrono>
+#include <fstream> // Para escribir en archivos
 using namespace std;
 
-const int MAX = 100; 
+const int MAX = 1000;
 
 void llenarMatriz(int matriz[MAX][MAX], int n, int m, int limite = 100) {
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j) {
-            matriz[i][j] = rand() % limite;
-        }
-    }
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			matriz[i][j] = rand() % limite;
+		}
+	}
 }
 
 void mostrarMatriz(int matriz[MAX][MAX], int n, int m) {
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j) {
-            cout << matriz[i][j] << "  ";
-        }
-        cout << endl;
-    }
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			cout << matriz[i][j] << "  ";
+		}
+		cout << endl;
+	}
 }
 
 int sumarMatriz(int matriz[MAX][MAX], int n, int m) {
-    int suma = 0;
-    for (int i = 0; i < n; ++i) {
-        for (int j = 0; j < m; ++j) {
-            suma += matriz[i][j];
-        }
-    }
-    return suma;
+	int suma = 0;
+	for (int i = 0; i < n; ++i) {
+		for (int j = 0; j < m; ++j) {
+			suma += matriz[i][j];
+		}
+	}
+	return suma;
 }
 
 int main() {
-    int n, m;
-    cout << "ingrese el numero de filas (max " << MAX << "): ";
-    cin >> n;
-    cout << "ingrese el nuemro de columnas (max " << MAX << "): ";
-    cin >> m;
+	int n, m;
+	int size = 0;
+	cout << "ingrese la matriz maxima"<<endl;
+	cin >> size;
+	int i = 1;
+	
+	ofstream archivo("resultados.txt");
+	archivo << "TamaC1o de la matriz,Tiempo promedio (nanosegundos)\n";
 
-    int matriz[MAX][MAX];
+	while(i <= size) {
+		long long sumaTiempos = 0; // Creo mi timer uvu
 
-    llenarMatriz(matriz, n, m);
-    mostrarMatriz(matriz, n, m);
+		int matriz[MAX][MAX];
+		n = i, m = i;
 
-    int suma = sumarMatriz(matriz, n, m);
-    cout << "\nla suma es: " << suma << endl;
+		llenarMatriz(matriz, n, m);
 
-    return 0;
+		auto start = chrono::high_resolution_clock::now();
+
+		cout<<"matriz de: "<<i<<" x "<<i<<endl;
+		mostrarMatriz(matriz, n, m);
+
+		int suma = sumarMatriz(matriz, n, m);
+
+		auto end = chrono::high_resolution_clock::now();
+		sumaTiempos += chrono::duration_cast<chrono::nanoseconds>(end - start).count();
+		long long tiempoPromedio = sumaTiempos /size;
+
+		cout << "\nla suma es: " << suma << endl;
+		cout << "Tiempo: "<<tiempoPromedio<<endl;
+
+		archivo << i << "," << tiempoPromedio << "\n";
+		i++;
+	}
+	archivo.close();
+	return 0;
 }
