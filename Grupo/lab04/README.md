@@ -39,4 +39,4 @@ Comit 3: https://github.com/sebastian-david-pizango/ProyectoLp3/commit/bca820f24
 
 ## Gráfico de sumatoria con threads 
 
-![Grafico simulación con](https://github.com/sebastian-david-pizango/ProyectoLp3/blob/master/Grupo/lab04/con%20threads.png)
+![Grafico simulación con](https://github.com/sebastian-david-pizango/ProyectoLp3/blob/master/Grupo/lab04/Grafico%20Matriz.PNG)
