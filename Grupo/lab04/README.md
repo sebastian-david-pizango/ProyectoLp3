@@ -26,11 +26,12 @@ Comit 2: https://github.com/sebastian-david-pizango/ProyectoLp3/commit/dfd6a72c4
 
 - Comit del codigo actualizado para hacer lo mismo pero con threads
 
-Comit 3: https://github.com/sebastian-david-pizango/ProyectoLp3/commit/5655ad59e7f70f0d742a15ad4382a167ca401f89
+Comit 3: https://github.com/sebastian-david-pizango/ProyectoLp3/commit/bca820f2444ac0668ba39cb1a931a0b4e6a0f2fc
 
 # Graficos
 
 - El nombre de los graficos esta al revéz perdón jaja
+
 
 ## Gráfico de sumatorio sin threads
 
