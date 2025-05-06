@@ -39,7 +39,5 @@ Commit: https://github.com/sebastian-david-pizango/ProyectoLp3/commit/937a1a53ed
 
 # Gráfico comparando tiempo
 
-- Hubo un error al poner el nombre la linea llamada normal es la forma secuencial y la llamada clases es con threads
-
 ![Grafico Comparacion](https://github.com/sebastian-david-pizango/ProyectoLp3/blob/master/Parcial/Comparación.jpeg)
 
