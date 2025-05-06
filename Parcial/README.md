@@ -11,6 +11,8 @@
 
 En el directorio se ve la diferencia de tiempo en calcular la suma de valores dentro de una matriz cuadrada, entre una matriz que utiliza clases y una suma secuencial y otra matriz que utiliza también clases y una suma con uso de threads
 
+En cada gráfico la simulación se hace con 1000 datos
+
 ## Secuencial
 
 ### Comit
@@ -39,5 +41,5 @@ Commit: https://github.com/sebastian-david-pizango/ProyectoLp3/commit/937a1a53ed
 
 - Hubo un error al poner el nombre la linea llamada normal es la forma secuencial y la llamada clases es con threads
 
-![Grafico Comparacion]( )
+![Grafico Comparacion](https://github.com/sebastian-david-pizango/ProyectoLp3/blob/master/Parcial/Comparación.jpeg)
 
