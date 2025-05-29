@@ -64,9 +64,9 @@ void MainWindow::onHorseFinished(const QString& name, qint64 timeMs, int restTim
         int posicion = 1;
         for (const Result& r : results) {
             resultsArea->append(QString::number(posicion) + ". " + r.name +
-                                " - Tiempo total: " + QString::number(r.totalTime()) + " ms " +
-                                "(Llegada: " + QString::number(r.arrivalTime) +
-                                " ms, Descanso: " + QString::number(r.restTime) + " ms)");
+                                " - Tiempo llegada: " + QString::number(r.totalTime()) + " ms " +
+
+                                " ms, Descanso: " + QString::number(r.restTime) + " ms");
             posicion++;
         }
 
