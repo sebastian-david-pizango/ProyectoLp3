@@ -41,13 +41,21 @@ template <> constexpr inline auto HorseSec2::qt_create_metaobjectdata<qt_meta_ta
         "HorseSec2",
         "updateProgress",
         "",
-        "value"
+        "value",
+        "finishedRace",
+        "name",
+        "timeMs",
+        "restTimeMs"
     };
 
     QtMocHelpers::UintData qt_methods {
         // Signal 'updateProgress'
         QtMocHelpers::SignalData<void(int)>(1, 2, QMC::AccessPublic, QMetaType::Void, {{
             { QMetaType::Int, 3 },
+        }}),
+        // Signal 'finishedRace'
+        QtMocHelpers::SignalData<void(const QString &, qint64, int)>(4, 2, QMC::AccessPublic, QMetaType::Void, {{
+            { QMetaType::QString, 5 }, { QMetaType::LongLong, 6 }, { QMetaType::Int, 7 },
         }}),
     };
     QtMocHelpers::UintData qt_properties {
@@ -73,11 +81,14 @@ void HorseSec2::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, v
     if (_c == QMetaObject::InvokeMetaMethod) {
         switch (_id) {
         case 0: _t->updateProgress((*reinterpret_cast< std::add_pointer_t<int>>(_a[1]))); break;
+        case 1: _t->finishedRace((*reinterpret_cast< std::add_pointer_t<QString>>(_a[1])),(*reinterpret_cast< std::add_pointer_t<qint64>>(_a[2])),(*reinterpret_cast< std::add_pointer_t<int>>(_a[3]))); break;
         default: ;
         }
     }
     if (_c == QMetaObject::IndexOfMethod) {
         if (QtMocHelpers::indexOfMethod<void (HorseSec2::*)(int )>(_a, &HorseSec2::updateProgress, 0))
+            return;
+        if (QtMocHelpers::indexOfMethod<void (HorseSec2::*)(const QString & , qint64 , int )>(_a, &HorseSec2::finishedRace, 1))
             return;
     }
 }
@@ -101,14 +112,14 @@ int HorseSec2::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 1)
+        if (_id < 2)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 1;
+        _id -= 2;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 1)
+        if (_id < 2)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 1;
+        _id -= 2;
     }
     return _id;
 }
@@ -117,5 +128,11 @@ int HorseSec2::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 void HorseSec2::updateProgress(int _t1)
 {
     QMetaObject::activate<void>(this, &staticMetaObject, 0, nullptr, _t1);
+}
+
+// SIGNAL 1
+void HorseSec2::finishedRace(const QString & _t1, qint64 _t2, int _t3)
+{
+    QMetaObject::activate<void>(this, &staticMetaObject, 1, nullptr, _t1, _t2, _t3);
 }
 QT_WARNING_POP

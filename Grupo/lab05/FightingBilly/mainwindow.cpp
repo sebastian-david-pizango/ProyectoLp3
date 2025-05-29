@@ -9,7 +9,6 @@ MainWindow::MainWindow(std::vector<HorseSec2*> horses, QWidget *parent)
     : QMainWindow(parent), ui(new Ui::MainWindow), horses(horses)
 {
     ui->setupUi(this);
-
     QWidget* central = new QWidget(this);
     layout = new QVBoxLayout(central);
 
@@ -24,7 +23,6 @@ MainWindow::MainWindow(std::vector<HorseSec2*> horses, QWidget *parent)
         labels.push_back(label);
         bars.push_back(bar);
 
-        // Mapear nombre del caballo a su barra para fácil acceso
         horseBarMap[horse->getName2()] = bar;
 
         connect(horse, &HorseSec2::updateProgress, bar, &QProgressBar::setValue);
@@ -75,7 +73,13 @@ void MainWindow::onHorseFinished(const QString& name, qint64 timeMs, int restTim
         resultsArea->append("------------------------------");
         resultsArea->append("🏆 Ganador: " + results.front().name);
 
-        // Cambiar color de la barra del ganador a verde
+        int descansoTotal = 0;
+        for (const Result& r : results) {
+            descansoTotal += r.restTime;
+        }
+
+        resultsArea->append("tiempo total de descanso: " + QString::number(descansoTotal) + " ms");
+
         QProgressBar* winningBar = horseBarMap[results.front().name];
         winningBar->setStyleSheet(
             "QProgressBar::chunk { background-color: #4CAF50; }"
@@ -83,7 +87,3 @@ void MainWindow::onHorseFinished(const QString& name, qint64 timeMs, int restTim
             );
     }
 }
-
-
-
-

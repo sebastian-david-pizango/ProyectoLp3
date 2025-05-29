@@ -7,7 +7,7 @@
 #include <QLabel>
 #include <QTextEdit>
 #include <vector>
-#include <map>               // <-- Agregado para map
+#include <map>
 #include "horsesec2.h"
 
 struct Result {
@@ -44,8 +44,9 @@ private:
     std::size_t finishedCount = 0;
 
     std::vector<Result> results;
-    std::map<QString, QProgressBar*> horseBarMap;   // <-- Nuevo para mapear nombre->barra
+    std::map<QString, QProgressBar*> horseBarMap;
 };
 
 #endif // MAINWINDOW_H
+
 
