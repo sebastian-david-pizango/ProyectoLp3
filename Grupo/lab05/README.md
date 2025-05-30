@@ -1,4 +1,4 @@
-# Carpeta de la actividad del Laboratio 04 de LP3
+ecei
 
 - En el directorio se encuentran el trabajo de una simulación de una carrera de caballos, siendo los caballos baras de progreso, que tienen la capacidad de dormir, ya al acabar la carrera mostrara cuanto durmio y cuanto tardó en llegar a la meta el caballo.
 
@@ -21,3 +21,12 @@ Commit del codigo: https://github.com/sebastian-david-pizango/ProyectoLp3/commit
 Commit del codigo con su docuemntación: https://github.com/sebastian-david-pizango/ProyectoLp3/commit/32bc10c747bf286b2cafc78f1bf6718c7dc7098a
 
 (Aca al abrir el link del repositorio deberia abrir un html con la documentacion pero no lo hace no sabemos como arregarlo :c)
+
+### Profe para complilar necesita hacer lo siguiente 
+En QT Creator:
+Menu Build -> Clean Project
+luego Build -> Run qmake
+y finalmente -> Rebuild Project
+
+xd
+
