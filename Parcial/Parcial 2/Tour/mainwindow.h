@@ -2,15 +2,15 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QGraphicsView>
+#include <QGraphicsScene>
+#include <QListWidget>
+#include <QPushButton>
+#include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QWidget>
 
-QT_BEGIN_NAMESPACE
-namespace Ui {
-class MainWindow;
-}
-QT_END_NAMESPACE
-
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
@@ -18,11 +18,24 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_loginButton_clicked();
-    void on_registerButton_clicked();
+    void on_btnDeleteNode_clicked();
+    void on_btnDeleteRoute_clicked();
+    void on_btnShortestPath_clicked();
 
 private:
-    Ui::MainWindow *ui;
+    void refreshNodeList();
+    void refreshRouteList();
+    void drawGraph();
+
+    QGraphicsView *mapView;
+    QGraphicsScene *scene;
+    QListWidget *nodeList;
+    QListWidget *routeList;
+    QPushButton *btnDeleteNode;
+    QPushButton *btnDeleteRoute;
+    QPushButton *btnShortestPath;
 };
 
 #endif // MAINWINDOW_H
+
+
