@@ -24,3 +24,12 @@ https://github.com/sebastian-david-pizango/ProyectoLp3/commit/a797969147cc720fcc
 Commit 2: Creacion de los nodos y rutas con su interfaz grafica:
 https://github.com/sebastian-david-pizango/ProyectoLp3/commit/bbf0339f623db57f1b8d15daa3406e6df7e07341
 
+## Imagenes de la app
+
+## Ingreso
+![Ingreso](https://github.com/sebastian-david-pizango/ProyectoLp3/blob/master/Parcial/Imagenes%202/WhatsApp%20Image%202025-07-02%20at%202.51.01%20PM.jpeg)
+
+## Nodos  Ramas
+
+![Nodo Rama](https://github.com/sebastian-david-pizango/ProyectoLp3/blob/master/Parcial/Imagenes%202/WhatsApp%20Image%202025-07-02%20at%202.50.46%20PM.jpeg)
+
