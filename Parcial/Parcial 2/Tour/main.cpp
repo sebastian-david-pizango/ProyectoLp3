@@ -1,5 +1,10 @@
 #include "mainwindow.h"
+<<<<<<< HEAD
+#include <QApplication>
+#include "graph.h"
+=======
 #include <QMessageBox>
+>>>>>>> 43a9f85fd96ba7ac00c22c1bd6dcaa908bbfc71d
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
