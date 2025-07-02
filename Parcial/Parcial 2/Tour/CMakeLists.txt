@@ -10,13 +10,19 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+<<<<<<< HEAD
 # Buscar paquetes de Qt
 find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
 find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+=======
+# Solo usamos Widgets, nada de Multimedia
+find_package(Qt6 REQUIRED COMPONENTS Widgets)
+>>>>>>> 4d4cc450ad9e926ecda62c2d71504fbe9cf317be
 
 # Lista de archivos fuente y encabezados
 set(PROJECT_SOURCES
     main.cpp
+<<<<<<< HEAD
 
     mainwindow.cpp
     mainwindow.h
@@ -78,4 +84,24 @@ install(TARGETS Tours
 if(QT_VERSION_MAJOR EQUAL 6)
     qt_finalize_executable(Tours)
 endif()
+=======
+    mainwindow.cpp
+    mainwindow.h
+    mainwindow.ui
+    registerwindow.cpp
+    registerwindow.h
+    registerwindow.ui
+)
+
+qt_add_executable(Tours
+    MANUAL_FINALIZATION
+    ${PROJECT_SOURCES}
+)
+
+target_link_libraries(Tours
+    PRIVATE Qt6::Widgets
+)
+
+qt_finalize_executable(Tours)
+>>>>>>> 4d4cc450ad9e926ecda62c2d71504fbe9cf317be
 

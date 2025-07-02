@@ -16,11 +16,10 @@ public:
     ~RegisterWindow();
 
 private slots:
-    void on_registerButton_clicked();
+    void on_registerConfirmButton_clicked();
 
 private:
     Ui::RegisterWindow *ui;
 };
 
 #endif // REGISTERWINDOW_H
-

@@ -62,6 +62,7 @@ void MainWindow::on_btnAddNode_clicked() {
     drawGraph();
 }
 
+<<<<<<< HEAD
 void MainWindow::on_btnDeleteNode_clicked() {
     QString name = ui->nodeList->currentItem()->text();
     graph.removeNode(name);
@@ -93,3 +94,6 @@ void MainWindow::on_btnShortestPath_clicked() {
     QString end = QInputDialog::getText(this, "Fin", "Nodo final:");
     auto path = graph.shortestPath(start, end);
     QMessage
+=======
+
+>>>>>>> 4d4cc450ad9e926ecda62c2d71504fbe9cf317be
