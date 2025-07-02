@@ -48,3 +48,4 @@ void MainWindow::on_registerButton_clicked()
     reg->exec();
 }
 
+
