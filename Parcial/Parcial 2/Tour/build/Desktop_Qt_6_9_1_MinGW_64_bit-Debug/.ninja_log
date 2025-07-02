@@ -1,0 +1,20 @@
+# ninja log v6
+9	614	7731870592601064	Tours_autogen/timestamp	4fe2019ae58e1fe4
+9	614	7731870592601064	C:/Users/ASUS/Documents/Repositorios/ProyectoLp3/Parcial/Parcial 2/Tour/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Tours_autogen/timestamp	4fe2019ae58e1fe4
+9	614	7731870592601064	Tours_autogen/mocs_compilation.cpp	4fe2019ae58e1fe4
+630	4419	7731870593403761	CMakeFiles/Tours.dir/registerwindow.cpp.obj	9a6bac364aca8dd7
+9	614	7731870592601064	C:/Users/ASUS/Documents/Repositorios/ProyectoLp3/Parcial/Parcial 2/Tour/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Tours_autogen/mocs_compilation.cpp	4fe2019ae58e1fe4
+615	3901	7731870593259065	CMakeFiles/Tours.dir/Tours_autogen/mocs_compilation.cpp.obj	c6cdf9914597e6df
+3	324	7731876853998712	build.ninja	eec265a054c38773
+3	668	7731876853998712	build.ninja	eec265a054c38773
+16	122	7731876856011174	Tours_autogen/timestamp	4fe2019ae58e1fe4
+16	122	7731876856011174	Tours_autogen/mocs_compilation.cpp	4fe2019ae58e1fe4
+16	122	7731876856011174	C:/Users/ASUS/Documents/Repositorios/ProyectoLp3/Parcial/Parcial 2/Tour/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Tours_autogen/timestamp	4fe2019ae58e1fe4
+16	122	7731876856011174	C:/Users/ASUS/Documents/Repositorios/ProyectoLp3/Parcial/Parcial 2/Tour/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Tours_autogen/mocs_compilation.cpp	4fe2019ae58e1fe4
+128	2671	7731876857125860	CMakeFiles/Tours.dir/registerwindow.cpp.obj	9a6bac364aca8dd7
+8	539	7731877912216281	Tours_autogen/timestamp	4fe2019ae58e1fe4
+8	539	7731877912216281	Tours_autogen/mocs_compilation.cpp	4fe2019ae58e1fe4
+8	539	7731877912216281	C:/Users/ASUS/Documents/Repositorios/ProyectoLp3/Parcial/Parcial 2/Tour/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Tours_autogen/timestamp	4fe2019ae58e1fe4
+8	539	7731877912216281	C:/Users/ASUS/Documents/Repositorios/ProyectoLp3/Parcial/Parcial 2/Tour/build/Desktop_Qt_6_9_1_MinGW_64_bit-Debug/Tours_autogen/mocs_compilation.cpp	4fe2019ae58e1fe4
+540	3189	7731877912808982	CMakeFiles/Tours.dir/Tours_autogen/mocs_compilation.cpp.obj	c6cdf9914597e6df
+550	3419	7731877912898992	CMakeFiles/Tours.dir/registerwindow.cpp.obj	9a6bac364aca8dd7
