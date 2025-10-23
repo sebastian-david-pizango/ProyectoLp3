@@ -1,0 +1,38 @@
+sing System;
+
+class CristianAlgorithmSimulation
+{
+    static void Main()
+    {
+        // Simulación de tiempos en milisegundos
+        double T1 = 1000.0;      // Cliente envía solicitud
+        double networkDelay1 = 50.0; // Retardo hacia el servidor
+        double T2 = T1 + networkDelay1; // Servidor recibe
+
+        // Servidor procesa solicitud y responde rápido
+        double processingTime = 20.0;
+        double T3 = T2 + processingTime; // Servidor envía respuesta
+
+        double networkDelay2 = 50.0; // Retardo de vuelta
+        double T4 = T3 + networkDelay2; // Cliente recibe
+
+        // Cálculos según el algoritmo de Cristian
+        double RTT = T4 - T1;
+        double d = RTT / 2.0;
+        double Tserver_est = T3 + d;
+
+        // Resultados
+        Console.WriteLine("=== Simulación del Algoritmo de Cristian ===\n");
+        Console.WriteLine($"T1 (cliente envía): {T1} ms");
+        Console.WriteLine($"T2 (servidor recibe): {T2} ms");
+        Console.WriteLine($"T3 (servidor responde): {T3} ms");
+        Console.WriteLine($"T4 (cliente recibe): {T4} ms\n");
+
+        Console.WriteLine($"RTT = T4 - T1 = {T4 - T1} ms");
+        Console.WriteLine($"d = RTT / 2 = {d} ms");
+        Console.WriteLine($"Hora estimada del servidor = T3 + d = {Tserver_est} ms\n");
+
+        Console.WriteLine("El cliente deberia ajustar su reloj a " + Tserver_est + " ms");
+    }
+}
+

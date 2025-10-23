@@ -1,0 +1,107 @@
+#include <iostream#include <iostream>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+#include <chrono>
+using namespace std;
+
+class Semaphore {
+private:
+    mutex mtx;
+    condition_variable cv;
+    int count; 
+
+public:
+    Semaphore(int init_count) : count(init_count) {}
+
+    void wait() {
+        unique_lock<mutex> lock(mtx);
+        while (count == 0) {
+            cv.wait(lock);
+        }
+        count--;
+    }
+
+    void signal() {
+        unique_lock<mutex> lock(mtx);
+        count++;
+        cv.notify_one();
+    }
+};
+
+void proceso(int id, Semaphore &sem) {
+    sem.wait(); 
+    cout << "Proceso " << id << " entra en la sección crítica.\n";
+    this_thread::sleep_for(chrono::seconds(2)); 
+    cout << "Proceso " << id << " sale de la sección crítica.\n";
+    sem.signal(); 
+}
+
+int main() {
+    cout << "Iniciando simulación de semáforos...\n";
+    Semaphore sem(1); 
+    thread p1(proceso, 1, ref(sem));
+    thread p2(proceso, 2, ref(sem));
+    thread p3(proceso, 3, ref(sem));
+
+    p1.join();
+    p2.join();
+    p3.join();  
+
+    cout << "Todos los procesos han terminado.\n";
+
+    return 0;
+}>
+#include <thread>
+#include <mutex>
+#include <condition_variable>
+#include <chrono>
+using namespace std;
+
+class Semaphore {
+private:
+    mutex mtx;
+    condition_variable cv;
+    int count; 
+
+public:
+    Semaphore(int init_count) : count(init_count) {}
+
+    void wait() {
+        unique_lock<mutex> lock(mtx);
+        while (count == 0) {
+            cv.wait(lock);
+        }
+        count--;
+    }
+
+    void signal() {
+        unique_lock<mutex> lock(mtx);
+        count++;
+        cv.notify_one();
+    }
+};
+
+void proceso(int id, Semaphore &sem) {
+    sem.wait(); 
+    cout << "Proceso " << id << " entra en la sección crítica.\n";
+    this_thread::sleep_for(chrono::seconds(2)); 
+    cout << "Proceso " << id << " sale de la sección crítica.\n";
+    sem.signal(); 
+}
+
+int main() {
+    cout << "Iniciando simulación de semáforos...\n";
+    Semaphore sem(1); 
+    thread p1(proceso, 1, ref(sem));
+    thread p2(proceso, 2, ref(sem));
+    thread p3(proceso, 3, ref(sem));
+
+    p1.join();
+    p2.join();
+    p3.join();  
+
+    cout << "Todos los procesos han terminado.\n";
+
+    return 0;
+}

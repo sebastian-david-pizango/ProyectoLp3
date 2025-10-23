@@ -1,0 +1,116 @@
+#include <iostream>
+#include <thread>
+#include <mutex>
+#include <queue>
+#include <condition_variable>
+#include <algorithm>
+#include <chrono>
+using namespace std;
+
+struct Message {
+    int from;
+    int timestamp;
+    string text;
+};
+
+// Canal de comunicación simple (cola protegida)
+class Channel {
+    queue<Message> q;
+    mutex m;
+    condition_variable cv;
+public:
+    void send(const Message& msg) {
+        lock_guard<mutex> lock(m);
+        q.push(msg);
+        cv.notify_all();
+    }
+
+    bool receive(Message& msg, int timeout_ms = 1000) {
+        unique_lock<mutex> lock(m);
+        if (cv.wait_for(lock, chrono::milliseconds(timeout_ms), [&]{ return !q.empty(); })) {
+            msg = q.front();
+            q.pop();
+            return true;
+        }
+        return false;
+    }
+};
+
+// Variables globales
+Channel ch12, ch23; // Canales: P1→P2 y P2→P3
+int clockP1 = 0, clockP2 = 0, clockP3 = 0;
+mutex cout_mtx;
+
+// Función para registrar eventos (protegida con mutex)
+void logEvent(const string& proc, const string& action, int clock) {
+    lock_guard<mutex> lock(cout_mtx);
+    cout << proc << " (ts=" << clock << ") -> " << action << endl;
+}
+
+// ======= Funciones de los procesos =======
+void process1() {
+    this_thread::sleep_for(chrono::milliseconds(100));
+    // Evento interno
+    clockP1++;
+    logEvent("P1", "Evento interno A", clockP1);
+
+    // Enviar mensaje a P2
+    clockP1++;
+    Message msg{1, clockP1, "Mensaje de P1"};
+    ch12.send(msg);
+    logEvent("P1", "Envía mensaje a P2 (ts=" + to_string(msg.timestamp) + ")", clockP1);
+}
+
+void process2() {
+    Message msg;
+    // Esperar mensaje de P1
+    if (ch12.receive(msg, 2000)) {
+        clockP2 = max(clockP2, msg.timestamp) + 1;
+        logEvent("P2", "Recibe mensaje de P1 (t_msg=" + to_string(msg.timestamp) + ")", clockP2);
+    }
+
+    // Evento interno
+    clockP2++;
+    logEvent("P2", "Evento interno B", clockP2);
+
+    // Enviar mensaje a P3
+    clockP2++;
+    Message msg2{2, clockP2, "Mensaje de P2"};
+    ch23.send(msg2);
+    logEvent("P2", "Envía mensaje a P3 (ts=" + to_string(msg2.timestamp) + ")", clockP2);
+}
+
+void process3() {
+    // Evento interno antes de recibir
+    clockP3++;
+    logEvent("P3", "Evento interno C", clockP3);
+
+    Message msg;
+    // Esperar mensaje de P2
+    if (ch23.receive(msg, 3000)) {
+        clockP3 = max(clockP3, msg.timestamp) + 1;
+        logEvent("P3", "Recibe mensaje de P2 (t_msg=" + to_string(msg.timestamp) + ")", clockP3);
+    }
+
+    // Evento interno
+    clockP3++;
+    logEvent("P3", "Evento interno D", clockP3);
+}
+
+int main() {
+    cout << "--- SIMULACIÓN DE SINCRONIZACIÓN DE LAMPORT (CON HILOS) ---\n\n";
+
+    thread t1(process1);
+    thread t2(process2);
+    thread t3(process3);
+
+    t1.join();
+    t2.join();
+    t3.join();
+
+    cout << "\n--- ESTADOS FINALES ---\n";
+    cout << "P1: " << clockP1 << endl;
+    cout << "P2: " << clockP2 << endl;
+    cout << "P3: " << clockP3 << endl;
+
+    return 0;
